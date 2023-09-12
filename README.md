@@ -26,6 +26,7 @@ step-by-step
             e. pilih nama aplikasi untuk jadi domain web
             f. centang bagian HTTP Listener on PORT dan klik Deploy App
 2. Bagan yang berisi request client ke web aplikasi berbasis Django beserta responnya dan jelaskan pada bagan tersebut kaitan antara urls.py, views.py, models.py, dan berkas html   
+![This is an image](/Bagan.png)
 
 3. mengapa kita menggunakan virtual environment? Apakah kita tetap dapat membuat aplikasi web berbasis Django tanpa menggunakan virtual environment?
 
