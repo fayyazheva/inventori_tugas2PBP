@@ -1,9 +1,9 @@
 from django.db import models
 
 class Product(models.Model):
-    name = models.CharField(max_length=255)
-    date_added = models.DateField(auto_now_add=True)
-    price = models.IntegerField()
+    product = models.CharField(max_length=255)
+    price = models.CharField(max_length=255)
+    amount = models.IntegerField()
     description = models.TextField()
 
 # models.Model adalah kelas dasar yang digunakan untuk mendefinisikan model dalam Django.

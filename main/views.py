@@ -1,8 +1,10 @@
 from django.shortcuts import render
 def show_main(request):
     context = {
-        'name': 'Fayya Salwa Azheva',
-        'class': 'PBP B'
+        'product': 'Mochi Daifuku Rasa Strawberry Blueberry',
+        'price': 'Rp 150.000',
+        'description' : 'Mochi enak, sehat, cocok untuk anak fasilkom karena warnanya merah biru :D',
+        'amount' : '100'
     }
 
     return render(request, "main.html", context)
