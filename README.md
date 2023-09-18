@@ -2,6 +2,8 @@ Nama    : Fayya Salwa Azheva
 NPM     : 2206826192
 Kelas   : PBP B
 Link App: https://inventoripbp.adaptable.app/
+
+===========TUGAS 2=================
 Penjelasan:
 1.  cara mengimplementasikan checklist di atas secara
 step-by-step
@@ -56,6 +58,123 @@ MVVM (Model-View-ViewModel):
     MVVM merupakan pola yang umumnya digunakan dalam pengembangan aplikasi berbasis UI, seperti aplikasi seluler atau desktop. Dalam hal ini menekankan pemisahan tugas antara View yang pasif dan ViewModel yang aktif dalam mengelola logika tampilan dan interaksi pengguna.
 
 
+===========TUGAS 3=================
+1. Apa perbedaan antara form POST dan form GET dalam Django?
+
+    form POST digunakan untuk mengirim data dari user ke server untuk diolah dan disimpan dimana pengiriman data tersebut mengubah status atau data di server, seperti menambahkan, mengedit, atau menghapus suatu entitas pada database
+
+    form GET juga digunakna untuk mengirim data dari user ke server, namun pengirim data tidak memengaruhi status atau data di server, seperti pencarian atau pengambilan data dari server
+
+2. Apa perbedaan utama antara XML, JSON, dan HTML dalam konteks pengiriman data?
+
+    XML -> self-descriptive, dapat mengerti informasi apa yang ingin disampaikan dari data tertulis dan dibungkus di dalam tag. contoh:
+        <?xml version="1.0" encoding="UTF-8"?>
+        <person>
+            <name>Fayya Salwa</name>
+            <age>19</age>
+            <address>
+                <street>37 Palakali</street>
+                <city>Depok</city>
+                <zip>51111</zip>
+            </address>
+        </person>
+
+    JSON -> self-describing, jauh lebih mudah dimengerti mengenai informasi yang ditulis. Sintaksnya merupakan turunan dari object JavaScript, namun formatnya berbentuk text. Data disimpan dalam bentuk key dan value. contoh:
+        {
+            "name": "Fayya Salwa",
+            "age": 19,
+            "address": {
+                "street": "37 Palakali",
+                "city": "Depok",
+                "zip": "51111"
+            }
+        }
+    
+    HTML -> tidak berkaitan lengsung dengan pengiriman data, HTML  digunakan untuk membuat tampilan halaman web dan mengatur tampilan konten yang akan ditampilkan. contoh:
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>Data XML</title>
+        </head>
+        <body>
+            <person>
+                <name>Fayya Salwa</name>
+                <age>19</age>
+                <address>
+                    <street>37 Palakali</street>
+                    <city>Depok</city>
+                    <zip>51111</zip>
+                </address>
+            </person>
+        </body>
+        </html>
+    maka, HTML hanya digunakan untuk menampilkan struktur data XML atau JSON di peramban web namun tidak melakukan pemrosesan data
+  
+3. Mengapa JSON sering digunakan dalam pertukaran data antara aplikasi web modern?
+
+    karena JSON didesain self-describing dimana sangat mudah dimengerti oleh user dan sintaksnya merupakan turunan dari object pada JavaScript yang formatnya berupa text. Selain itu Data pada JSON disimpan dalam bentuk key dan value yang berupa tipe data primitif (string, number, boolean) dan berupa objek. 
+
+4. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+    1. Membuat input form untuk menambahkan objek model pada app sebelumnya.
+     -membuat form sederhana untuk menginput data-data pada aplikasi agar nantinya kita dapat menambahkan data baru yang akan ditampilkan pada halaman utama. dalam hal ini kita 
+        - membuat berkas python form tersebut, lalu:
+            - menambahkan model yang digunakan form tersebut
+            - menentukan objek untuk  menyimpan isi dari form tersebut
+            - menentukan field dari model objek tersebut, contohnya nama product, price, description, amount, dsb.
+
+    -menambahkan beberapa pada bagian views.py seperti:
+        - import
+            from django.http import HttpResponseRedirect
+            from main.forms import ProductForm
+            from django.urls import reverse
+            
+             digunakan untuk melakukan redirect halaman web ke URL lain, membuat instance dari form dan menggunakannya dalam tampilan Django Anda untuk mengolah data, dan mengimport fungsi yang membantu dalam menghasilkan URL berdasarkan nama dari pola URL proyek django.
+
+        - fungsi baru yang menerima parameter request dan menghasilkan formulir yang dapat menambahkan data secara otomatis ketika user submit pada sebuah form
+
+    -mengubah fungsi show_main pada view.py agar dapat mengambil seluruh object product yang tersimpan pada database
+
+    -mengimport fungsi baru yang telah ditambahkan di views.py dan menambahkan path urlnya ke urlpatterns yang telah ada sebelumnya
+
+    2. Tambahkan 5 fungsi views untuk melihat objek yang sudah ditambahkan dalam format HTML, XML, JSON, XML by ID, dan JSON by ID.
+
+    [HTML] 
+    - membuat berkas HTML baru yang berisi
+     - inisiasi block form menggunakan metode POST
+     - token sebagai security yang digenerate secara otomatis oleh django
+     - sesuatu yang dapat menampilkan fields form pada form python yang telah dibuat
+     - tombol submit untuk mengirim request ke view fungsi baru
+    - menambahkan kode pada main.html yang telah dibuat sebelumnya yang dapat menampilkan data product dalam bentuk tabel dan tombol yang akan redirect ke halaman form 
+    
+    [XML/JSON/XML by ID/JSON by ID]
+    - membuat fungsi yang menerima paramater request untuk XML, JSON, XML by ID, dan JSON by ID yang berisi 
+        - variabel untuk menyimpan hasil query seluruh data
+        - return fuction yang berisi data hasil query yang diserialisasi menjadi XML/JSON/XML by ID/JSON by ID
+    - import fungsi-fungsi tersebut pada urls.py
+    - menambahkan path url pada urlspatterns fungsi-fungsi tersebut
+
+3.  Membuat routing URL untuk masing-masing views yang telah ditambahkan pada poin 2.
+    - mengimport fungsi-fungsi yang telah dibuat ke urls.py yang ada folder main:
+        from main.views import show_main, create_product, show_xml, show_json, show_xml_by_id, show_json_by_id 
+
+    - menambahkan path url pada urlspatterns fungsi-fungsi tersebut
+        [HTML]
+        path('create-product', create_product, name='create_product')
+        [XML]
+        path('xml/', show_xml, name='show_xml')
+        [JSON] 
+        path('json/', show_json, name='show_json'),
+        [XML by ID]
+        path('xml/<int:id>/', show_xml_by_id, name='show_xml_by_id')
+        [JSON by ID]
+        path('json/<int:id>/', show_json_by_id, name='show_json_by_id')
+
+akses XML, JSON, XML by ID, dan JSON by ID pada postman
+![This is an image](/POSTMAN_HTML.png)
+![This is an image](/POSTMAN_JSON.png)
+![This is an image](/POSTMAN_XML.png)
+![This is an image](/POSTMAN_XML_ID.png)
+![This is an image](/POSTMAN_JSON_ID.png)  
 
 
        
