@@ -287,10 +287,69 @@ Kekurangan:
     ...
 
 
- Membuat dua akun pengguna dengan masing-masing tiga dummy data menggunakan model yang telah dibuat pada aplikasi sebelumnya untuk setiap akun di lokal.
+    2. Membuat dua akun pengguna dengan masing-masing tiga dummy data menggunakan model yang telah dibuat pada aplikasi sebelumnya untuk setiap akun di lokal.
+    
+        - jalankan proyek django dengan perintah python manage.py runserver pada terminal
+        - buka  http://localhost:8000/
 
-    - 
+        setiap akun akan menjalankan step berikut: 
 
- Menghubungkan model Item dengan User.
+        - buat akun dengan menekan tulisan Register Now
+        - Masukkan username, password, dan password confirmation, dan klik daftar
+        - Login sesuai dengan username dan password akun yang telah dibuat sebelumnya, klik login
+        - klik Add New Product dan isi product, price, description, dan amount pada form tersebut lalu klik add product, ulangi selama 3 kali untuk menambahkan 3 product yang berbeda-beda
+        - logout untuk memasukkan akun yang lain
+    
+    
+    3.  Menghubungkan model Item dengan User.
+        Pengguna dapat melihat produk-produk yang telah dibuatnya yang hanya terorisasi pada produknya masing-masing
 
- Menampilkan detail informasi pengguna yang sedang logged in seperti username dan menerapkan cookies seperti last login pada halaman utama aplikasi.
+        - pada models.py, tambahkan kode
+            from django.contrib.auth.models import User
+           untuk mengimpor model user untuk mengelola user dalam otentikasi 
+        - menambahkan model Product untuk menghubungkan satu produk dengan satu user melalui sebuah relationship, dimana sebuah produk pasti terasosiasikan dengan seorang user
+
+        class Product(models.Model):
+            user = models.ForeignKey(User, on_delete=models.CASCADE)
+            ...
+
+        - pada views.py, ubah kode menjadi 
+
+            def create_product(request):
+                form = ProductForm(request.POST or None)
+
+                if form.is_valid() and request.method == "POST":
+                    product = form.save(commit=False)
+                    product.user = request.user
+                    product.save()
+                    return HttpResponseRedirect(reverse('main:show_main'))
+                ...
+            dimana parameter commit=False digunakan untuk mencegah Django agar tidak langsung menyimpan objek yang telah dibuat dari form langsung ke database. 
+
+        - mengubah kode pada fungsi show_main 
+            def show_main(request):
+                products = Product.objects.filter(user=request.user)
+
+                context = {
+                    'name': request.user.username,
+                ...
+            ...
+
+            hal ini berfungsi untuk  menampilkan objek Product yang terasosiasikan dengan pengguna yang sedang login dan  menyaring seluruh objek dengan hanya mengambil Product yang dimana field user terisi dengan objek User yang sama dengan pengguna yang sedang login
+        
+        karena telah mengubah model, maka kita akan melakukan migrasi model dengan cara 
+        python manage.py makemigrations
+
+        lalu pilih no 1 dan ketik kembali angka 1
+        lalu jalankan python manage.py migrate
+
+    4. Menampilkan detail informasi pengguna yang sedang logged in seperti username dan menerapkan cookies seperti last login pada halaman utama aplikasi.
+        
+        1. membuka fitur inspect element dengan shortcut ctrl+shift+c
+        2. klik bagian Application/Sytorage
+        3. klik bagian cookies
+        
+        Dari situ akan terlihat last login, csrftoken, sessionid
+
+        tentunya untuk melihat data tersebut, user harus login terlebih dahulu. Karena ketika logout, data tersebut akan otomatis hilang
+
