@@ -20,12 +20,11 @@ from django.urls import reverse
 def show_main(request):
     products = Product.objects.filter(user=request.user)
     context = {
-        'name' : 'Fayya Salwa Azheva',
+        'name': request.user.username,
         'kelas' : 'PBP B',
         'app_Name' : 'mochi', 
         'products' : products,
-        'last_login': request.COOKIES['last_login'],
-        'name': request.user.username,
+        'last_login': request.COOKIES['last_login'], 
     }
 
     return render(request, "main.html", context)
@@ -130,3 +129,6 @@ def logout_user(request):
 # response.delete_cookie('last_login') berfungsi untuk menghapus cookie last_login saat pengguna melakukan logout
 
 # Parameter commit=False yang digunakan pada potongan kode diatas berguna untuk mencegah Django agar tidak langsung menyimpan objek yang telah dibuat dari form langsung ke database. Hal tersebut memungkinkan kita untuk memodifikasi terlebih dahulu objek tersebut sebelum disimpan ke database. Pada kasus ini, kita akan mengisi field user dengan objek User dari return value request.user yang sedang terotorisasi untuk menandakan bahwa objek tersebut dimiliki oleh pengguna yang sedang login.
+
+# name:  diatas berfungsi untuk menampilkan objek Product yang terasosiasikan dengan pengguna yang sedang login. Hal tersebut dilakukan dengan menyaring seluruh objek dengan hanya mengambil Product yang dimana field user terisi dengan objek User yang sama dengan pengguna yang sedang login.
+# Kode request.user.username berfungsi untuk menampilkan username pengguna yang login pada halaman main
