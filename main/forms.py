@@ -1,7 +1,11 @@
 from django.forms import ModelForm
 from main.models import Product
+from django import forms
+
 
 class ProductForm(ModelForm):
+    add_stock = forms.BooleanField(initial=False, required=False, label="Add Stock")
+    reduce_stock = forms.BooleanField(initial=False, required=False, label="Reduce Stock")
     class Meta:
         model = Product
         fields = ["product", "price", "description", "amount"]

@@ -14,7 +14,7 @@
     <p>{{app_Name}}</p>
 
     {% load static %}
-    <img src="{% static 'mochipict.jpg' %}">
+    <img src="{% static 'inventori/mochipict.jpg' %}">
 
     <table>
         <tr>
@@ -33,6 +33,21 @@
                 <td>{{product.price}}</td>
                 <td>{{product.description}}</td>
                 <td>{{product.amount}}</td>
+                <td>
+                    <a href="{% url 'main:reduce_stock' product.id %}">
+                        <button>-</button>
+                    </a>
+                    {{product.amount}}
+                    <a href="{% url 'main:add_stock' product.id %}">
+                        <button>+</button>
+                    </a>
+                    </td>
+                    <td>{{product.date_added}}</td>
+                    <td>
+                        <a href="{% url 'main:delete' product.id %}">
+                            <button>delete</button>
+                        </a>
+                </td>
             </tr>
         {% endfor %}
     </table>
@@ -50,6 +65,7 @@
             Logout
         </button>
     </a>
+
     <h5>Sesi terakhir login: {{ last_login }}</h5>
 
 {% endblock content %}

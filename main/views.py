@@ -5,7 +5,7 @@ from django.urls import reverse
 from main.models import Product
 from django.http import HttpResponse
 from django.core import serializers
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render, get_object_or_404
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages  
 from django.contrib.auth import authenticate, login, logout
@@ -86,6 +86,32 @@ def logout_user(request):
     logout(request)
     response = HttpResponseRedirect(reverse('main:login'))
     response.delete_cookie('last_login')
+    return response
+
+@login_required(login_url='/login')
+def add_stock(request, product_id):
+    product = Product.objects.get(pk=product_id)
+    product.amount += 1
+    product.save()
+    response = HttpResponseRedirect(reverse("main:show_main")) 
+    return response
+
+# Tambahkan fungsi untuk mengurangi jumlah stok
+@login_required(login_url='/login')
+def reduce_stock(request, product_id):
+    product = Product.objects.get(pk=product_id)
+    response = HttpResponseRedirect(reverse("main:show_main"))
+    if (product.amount == 0):
+        return response
+    product.amount -= 1
+    product.save() 
+    return response
+
+@login_required(login_url='/login')
+def delete(request, id):
+    product = Product.objects.get(pk=id)
+    product.delete()
+    response = HttpResponseRedirect(reverse("main:show_main"))
     return response
 
 # def show_main(request) merupakan deklarasi fungsi show_main, yang menerima parameter request. Fungsi ini akan mengatur permintaan HTTP dan mengembalikan tampilan yang sesuai.
