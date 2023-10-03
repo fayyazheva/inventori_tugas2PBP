@@ -1,17 +1,119 @@
 {% extends 'base.html' %}
 
 {% block meta %}
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
     <title>Register</title>
+
+    <style>
+    body{
+        background-color: #21201f;
+    }
+
+    .tablestyle {
+        position: absolute;
+        top: 55%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        width: 800px;
+        min-height: 200px;
+        background: #4A503D;
+        border-radius: 30px;
+        padding: 40px;
+        box-sizing: border-box;
+        font-family: 'Poppins',sans-serif;
+        color: #fff;
+        text-align: left;
+        box-shadow:
+    inset 
+    0.3em 0.3em 2em rgba(36, 35, 35, 0.6);
+  } 
+  .tablestyle input[type="text"],
+.tablestyle input[type="number"],
+.tablestyle textarea {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background-color: #f2f2f2;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+
+.tablestyle input[type="submit"] {
+background-color: #fff;
+  color: #4A503D;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: fff-color 0.3s ease;
+  font-family: 'Poppins', sans-serif;
+}
+
+.tablestyle input[type="submit"]:hover {
+  background-color: #f0f2ec;
+}
+
+
+  .header {
+    font-family: 'Poppins',sans-serif;
+    text-align: center;
+    margin-top: 20px;
+    color: #fff;
+    
+  }
+
+  .background .shape{
+        height: 200px;
+        width: 200px;
+        position: absolute;
+        border-radius: 50%;
+    }
+    .shape:first-child{
+        background: linear-gradient(
+            #46214a,
+            #a97fad
+        );
+        left: -80px;
+        top: -80px;
+    }
+    .shape:last-child{
+        background: linear-gradient(
+            to right,
+            #3a5059,
+            #b2cbd6
+        );
+        right: -30px;
+        bottom: -80px;
+    }
+
+    .header {
+    font-family: 'Poppins',sans-serif;
+    text-align: center;
+    margin-top: 20px;
+    color: #fff;
+    
+  }
+
+    </style>
 {% endblock meta %}
 
 {% block content %}  
 
-<div class = "login">
+<div class = "registerBox">
     
-    <h1>Register</h1>  
+    <div class="header">
+        <h1>Register</h1>
+    </div>
+
+    <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
 
         <form method="POST" >  
-            {% csrf_token %}  
+            {% csrf_token %} 
+            <div class = "tablestyle">
             <table>  
                 {{ form.as_table }}  
                 <tr>  
@@ -19,6 +121,7 @@
                     <td><input type="submit" name="submit" value="Daftar"/></td>  
                 </tr>  
             </table>  
+            </div> 
         </form>
 
     {% if messages %}  

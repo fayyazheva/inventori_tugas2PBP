@@ -1,71 +1,572 @@
 
 {% extends 'base.html' %}
 
+{% block meta %}
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+*{
+  font-family: 'Poppins', sans-serif;
+}
+
+body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(
+            #4A503D,
+            #8E9775
+  );
+  margin: 0; 
+  padding: 0;
+}
+
+.container{
+  position: relative;
+  margin-top: 70px;
+}
+
+.container .card{
+  position: relative;
+  width: 320px;
+  height: 450px;
+  background: #FAF2DA;
+  margin-top: 30px; 
+  border-radius: 20px;
+  overflow: hidden;
+  margin: 10px;
+}
+
+.container .card:before{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #E28F83;
+  clip-path: circle(150px at 80% 20%);
+  transition: 0.5s ease-in-out;
+}
+
+.container .card:hover:before{
+  clip-path: circle(300px at 80% -20%);
+}
+
+/* .container .card:after{
+  content: 'Mochi';
+  position: absolute;
+  top: 30%;
+  left: -20%;
+  font-size: 8em;
+  font-weight: 800;
+  font-style: italic;
+  color: rgba(255,255,25,0.05)
+} */
+
+.container .card .imgBx{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10000;
+  width: 100%;
+  height: 220px;
+  transition: 0.5s;
+}
+
+.container .card:hover .imgBx{
+  top: 0%;
+  transform: translateY(0%);
+    
+}
+
+.container .card .imgBx img{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-25deg);
+  width: 270px;
+}
+
+.container .card .contentBx{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100px;
+  text-align: center;
+  transition: 1s;
+  z-index: 10;
+}
+
+.container .card:hover .contentBx{
+  height: 210px;
+}
+
+.container .card .contentBx h2{
+  position: relative;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: #0e0909;
+  margin: 0;
+}
+
+.container .card .contentBx .size, .container .card .contentBx .description .amount {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 20px;
+  transition: 0.5s;opacity: 0;
+  visibility: hidden;
+  padding-top: 0;
+  padding-bottom: 0;
+  line-height: 1.5px;
+}
+
+.container .card:hover .contentBx .price{
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 0.5s;
+}
+
+.container .card:hover .contentBx .description .amount{
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 0.6s;
+}
+
+.container .card .contentBx .price h3, .container .card .contentBx .description .amount h3{
+  color: #000000;
+  font-weight: bold;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-right: 10px;
+  line-height: 1.5px;
+}
+
+.container .card .contentBx .price span{
+  width: 100px;
+  height: 32px;
+  text-align: center;
+  line-height: 26px;
+  font-size: 16px;
+  font-weight: 500;
+  display: inline-block;
+  color: #111;
+  background: #E28F83;
+  margin: 0 1px;
+  margin-top: 1px;
+  transition: 0.5s;
+  color: #111;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+
+
+.container .card .contentBx a{
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 4px;
+  margin-top: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  color: #111;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: 0.5s;
+  margin-top: 0;
+}
+
+.container .card:hover .contentBx a{
+  opacity: 1;
+  transform: translateY(0px);
+  transition-delay: 0.75s;
+}
+
+.container .card .contentBx .table{
+  margin-left: 80px;
+
+  border-collapse: collapse; /* Menggabungkan batas sel */
+}
+
+
+.table td,th {
+  padding-right: 50px;
+  
+}
+
+
+.container .card .contentBx .button {
+  display: flex;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.button  {
+
+  background: #E28F83;
+  border-radius: 500px;
+  box-shadow: #E28F83 0 10px 20px -10px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  font-family: Poppins;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 24px;
+  opacity: 1;
+  outline: 0 solid transparent;
+  padding: 8px 18px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: fit-content;
+  word-break: break-word;
+  border: 0;
+  margin: -15px;
+
+}
+
+
+.container .card:hover .contentBx .button a {
+  opacity: 1;
+  transform: translateY(0px);
+  transition-delay: 0.75s;
+}
+
+
+.non-flex-button {
+  position: absolute;
+  right: 10px;
+  display: block;
+  transform: translateX(-50%);
+  margin-right: 5px;
+  justify-content: center;
+  bottom: 10px;
+  left: 50%; 
+  margin-top: 5px;
+  width: auto;
+  margin: -15px;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+nav{
+  position: fixed;
+  z-index: 99;
+  width: 100%;
+  top: 0;
+  background: #f2f2f2;
+  margin-bottom: 50px;
+}
+nav .wrapper{
+  position: relative;
+  max-width: 1300px;
+  padding: 0px 30px;
+  height: 70px;
+  line-height: 70px;
+  margin: auto;
+  display: flex;
+  /* align-items: center; */
+  justify-content: space-between;
+}
+.wrapper .logo a{
+  color: #4A503D;
+  font-size: 30px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.wrapper .identity a{
+  color: #4A503D;
+  font-size: 20px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.wrapper .date a{
+  color: #4A503D;
+  font-size: 10px;
+  font-weight: 600;
+  text-decoration: none;
+}
+.wrapper .nav-links{
+  display: inline-flex;
+}
+.nav-links li{
+  list-style: none;
+}
+.nav-links li a{
+  color: #4A503D;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 500;
+  padding: 9px 15px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+.nav-links li a:hover{
+  background: #3A3B3C;
+}
+.nav-links .mobile-item{
+  display: none;
+}
+.nav-links .drop-menu{
+  position: absolute;
+  background: #242526;
+  width: 180px;
+  line-height: 45px;
+  top: 85px;
+  opacity: 0;
+  visibility: hidden;
+  box-shadow: 0 6px 10px rgba(0,0,0,0.15);
+}
+.nav-links li:hover .drop-menu,
+.nav-links li:hover .mega-box{
+  transition: all 0.3s ease;
+  top: 70px;
+  opacity: 1;
+  visibility: visible;
+}
+.drop-menu li a{
+  width: 100%;
+  display: block;
+  padding: 0 0 0 15px;
+  font-weight: 400;
+  border-radius: 0px;
+}
+.content .row img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.content .row header{
+  color: #4A503D;
+  font-size: 20px;
+  font-weight: 500;
+}
+.content .row .mega-links{
+  margin-left: -40px;
+  border-left: 1px solid rgba(255,255,255,0.09);
+}
+.row .mega-links li{
+  padding: 0 20px;
+}
+.row .mega-links li a{
+  padding: 0px;
+  padding: 0 20px;
+  color: #4A503D;
+  font-size: 17px;
+  display: block;
+}
+.row .mega-links li a:hover{
+  color: #4A503D;
+}
+.wrapper .btn{
+  color: #4A503D;
+  font-size: 20px;
+  cursor: pointer;
+  display: none;
+}
+.wrapper .btn.close-btn{
+  position: absolute;
+  right: 30px;
+  top: 10px;
+}
+
+@media screen and (max-width: 970px) {
+  .wrapper .btn{
+    display: block;
+  }
+  .wrapper .nav-links{
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    max-width: 350px;
+    top: 0;
+    left: -100%;
+    background: #242526;
+    display: block;
+    padding: 50px 10px;
+    line-height: 50px;
+    overflow-y: auto;
+    box-shadow: 0px 15px 15px rgba(0,0,0,0.18);
+    transition: all 0.3s ease;
+  }
+  /* custom scroll bar */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #242526;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #3A3B3C;
+  }
+  #menu-btn:checked ~ .nav-links{
+    left: 0%;
+  }
+  #menu-btn:checked ~ .btn.menu-btn{
+    display: none;
+  }
+  #close-btn:checked ~ .btn.menu-btn{
+    display: block;
+  }
+  .nav-links li{
+    margin: 15px 10px;
+  }
+  .nav-links li a{
+    padding: 0 20px;
+    display: block;
+    font-size: 20px;
+  }
+
+  .nav-links .desktop-item{
+    display: none;
+  }
+  .nav-links .mobile-item{
+    display: block;
+    color: #f2f2f2;
+    font-size: 20px;
+    font-weight: 500;
+    padding-left: 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+  }
+  .nav-links .mobile-item:hover{
+    background: #3A3B3C;
+  }
+  .drop-menu li{
+    margin: 0;
+  }
+  .drop-menu li a{
+    border-radius: 5px;
+    font-size: 18px;
+  }
+  .content .row header{
+    font-size: 19px;
+  }
+}
+nav input{
+  display: none;
+}
+
+.body-text{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  text-align: center;
+  padding: 0 30px;
+}
+.body-text div{
+  font-size: 45px;
+  font-weight: 600;
+}
+
+
+
+</style>
+
+{% endblock meta %}
+
 {% block content %}
-<h1>Mochi Pacils</h1>
-
-    <h5>Name:</h5>
-    <p>{{name}}</p>
-
-    <h5>Class:</h5>
-    <p>{{kelas}}</p>
-
-    <h5>App Name:</h5>
-    <p>{{app_Name}}</p>
-
-    {% load static %}
-    <img src="{% static 'inventori/mochipict.jpg' %}">
-
-    <table>
-        <tr>
-            <th>Product</th>
-            <th>Price</th>
-            <th>Description</th>
-            <th>Amount</th>
-
-        </tr>
-
+        <nav>
+          <div class="wrapper">
+            <div class="logo"><a>Mochi Pachill</a></div>
+            <div class="identity"><a>Fayya Salwa A. - PBP B</a></div>
+            <div class="date"><a>Sesi terakhir login: {{ last_login }}</a></div>
+            <input type="radio" name="slider" id="menu-btn">
+            <input type="radio" name="slider" id="close-btn">
+            <ul class="nav-links">
+              <label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>
+              <li><a href="{% url 'main:create_product' %}">Add New Product</a></li>
+              <li><a href="{% url 'main:logout' %}">Logout</a></li>
+            </ul>
+            <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
+          </div>
+        </nav>
+        
+        <body>
+  
         {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
 
         {% for product in products %}
-            <tr>
-                <td>{{product.product}}</td>
-                <td>{{product.price}}</td>
-                <td>{{product.description}}</td>
-                <td>{{product.amount}}</td>
-                <td>
-                    <a href="{% url 'main:reduce_stock' product.id %}">
-                        <button>-</button>
-                    </a>
-                    {{product.amount}}
-                    <a href="{% url 'main:add_stock' product.id %}">
-                        <button>+</button>
-                    </a>
-                    </td>
-                    <td>{{product.date_added}}</td>
-                    <td>
-                        <a href="{% url 'main:delete' product.id %}">
-                            <button>delete</button>
-                        </a>
-                </td>
-            </tr>
+            <div class="container">
+                <div class="card">
+                <div class="imgBx">
+                  <!-- https://www.seekpng.com/png/full/111-1115842_food-kawaii-pink-ice-cream-pastel-japanese-food.png" -->
+                    <img src={{product.image}}>
+                </div>
+                <div class="contentBx">
+                  <h2>{{product.product}}</h2>
+                  <div class="table">
+                  <table>
+
+                    <div class="tr1">
+                    <tr>
+                      <div class="price">
+                        <th>Price : </th>
+                      </div>
+
+                      <div class="amount">
+                        <th>Amount : </th>
+                      </div>
+                    </tr>
+                    </div>
+
+                    <div class="tr2">
+                    <tr>
+                      <div class="price">
+                        <td><span>{{product.price}}</span></td>
+                      </div>
+
+                      <div class="amount">
+                        <td><span>{{product.amount}}</span></td>
+                      </div>
+                    </tr>
+                  </div>
+
+                  </table>
+                  </div>
+                  <div class="description">
+                    <h3>Description : </h3>
+                    <h4>{{product.description}}</h4>
+                  </div>
+                      <a href="{% url 'main:reduce_stock' product.id %}">
+                        <button class="button" role="button">-</button>
+                      </a>
+                      <a href="{% url 'main:add_stock' product.id %}">
+                        <button class="button" role="button">+</button>
+                      </a>
+                      <a href="{% url 'main:delete' product.id %}">
+                        <button class="button" role="button">delete</button>
+                      </a>
+                      <a href="{% url 'main:edit_product' product.pk %}">
+                        <button class="button" role="button">edit</button>
+                      </a>
+                    <div class="dateadded">
+                    <h3>{{product.date_added}} </h3>
+                    </div>
+                </div>
+                </div>
+            </div>
         {% endfor %}
-    </table>
-
-    <br />
-
-    <a href="{% url 'main:create_product' %}">
-        <button>
-            Add New Product
-        </button>
-    </a>
-
-    <a href="{% url 'main:logout' %}">
-        <button>
-            Logout
-        </button>
-    </a>
-
-    <h5>Sesi terakhir login: {{ last_login }}</h5>
+      </body>
+    
 
 {% endblock content %}
+
+
+  
+<!-- HTML !-->

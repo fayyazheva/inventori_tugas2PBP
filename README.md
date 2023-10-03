@@ -353,3 +353,107 @@ Kekurangan:
 
         tentunya untuk melihat data tersebut, user harus login terlebih dahulu. Karena ketika logout, data tersebut akan otomatis hilang
 
+===========TUGAS 5=================
+1. Jelaskan manfaat dari setiap element selector dan kapan waktu yang tepat untuk menggunakannya.
+    a. Element Selector
+        memungkinkan pengguna untuk mengubah properti untuk semua elemen yang memiliki tag HTML yang sama.
+        Penggunaanya saat kita menggunakan element sebagai selector dalam file CSS. Hal ini juga dapat digunnakan ketika  ingin menerapkan gaya ke semua elemen dengan tag HTML yang sama. Element selector menggunakan format [id_name]
+    b. ID Selector
+        ID selector menggunakan ID pada tag sebagai selector-nya di mana ID bersifat unik dalam satu halaman web. ID dapat ditambahkan pada halaman template HTML. Dalam hal ini, pengguna dapat menggunakan ID tersebut sebagai selector dalam file CSS. Penggunaanya saat pengguna ingin menerapkan gaya menggaya elemen yang memiliki ID tertentu dan hanya ada satu elemen dengan ID tersebut dalam halaman. ID selector menggunakan format #[id_name] (selalu diawali #)
+    c. Class Selector
+        Class Selector memungkinkan kita untuk mengelompokkan elemen dengan karakteristik yang sama. Penggunaan Class tersebut sebagai selector dalam file CSS dan digunakan saat  ingin menerapkan gaya yang sama ke beberapa elemen yang memiliki kelas yang sama. Class selector menggunakan format .[class_name] (diawali .)
+
+
+ 2. Jelaskan HTML5 Tag yang kamu ketahui.
+ <title>: Digunakan untuk menentukan judul halaman web yang akan ditampilkan di bilah judul browser.
+
+<link>: Umumnya digunakan untuk menghubungkan halaman web dengan berkas CSS eksternal atau untuk mengatur favicon.
+
+<style>: Ini adalah tag untuk menentukan aturan gaya CSS dalam halaman HTML atau secara internal.
+
+<body>: Bagian utama dari halaman web yang berisi konten yang akan ditampilkan kepada pengguna.
+
+<h1>, <h2>, ..., <h6>: Digunakan untuk menandai tingkat judul (dari yang terpenting hingga yang kurang penting) dalam halaman web.
+
+<p>: Untuk membuat paragraf teks.
+
+<a>: Digunakan untuk membuat tautan (hyperlink) ke halaman web lain atau sumber daya.
+
+<img>: Untuk menampilkan gambar dalam halaman web.
+
+<ul>: Digunakan untuk membuat daftar tak berurutan (unordered list).
+
+<ol>: Digunakan untuk membuat daftar terurut (ordered list).
+
+<li>: Digunakan untuk menandai setiap item dalam daftar (<ul> atau <ol>).
+
+<div>: Elemen divisual yang sering digunakan untuk mengelompokkan dan mengatur elemen-elemen HTML lainnya.
+
+<span>: Elemen inlinesering digunakan untuk mengapit atau menerapkan gaya pada teks atau elemen kecil lainnya.
+
+
+3. Jelaskan perbedaan antara margin dan padding.
+
+Margin
+-merupakan jarak antara elemen dengan elemen-elemen di luar elemen tersebut, sehingga mempengaruhi tata letak elemen terhadap elemen lain di sekitarnya.
+- tidak memiliki latar belakang (background) dan tidak akan tampil sebagai bagian dari elemen itu sendiri.
+- digunakan untuk mengatur jarak antara elemen dengan elemen-elemen luar, seperti elemen lain di sekitarnya atau batas area konten (misalnya, jarak antara dua kotak di dalam tata letak).
+
+Padding:
+
+-merupakan jarak antara konten dalam elemen dengan tepi elemen itu sendiri. Ini mempengaruhi bagian dalam dari elemen, termasuk area konten dan batasnya.
+-dapat memiliki latar belakang (background) dan akan tampil sebagai bagian dari elemen, sehingga mengubah warna atau gambar latar belakang di dalam elemen.
+-digunakan untuk mengatur jarak antara konten elemen dan tepi elemen tersebut.
+
+4. Jelaskan perbedaan antara framework CSS Tailwind dan Bootstrap. Kapan sebaiknya kita menggunakan Bootstrap daripada Tailwind, dan sebaliknya?
+
+Tailwind
+-Tailwind CSS membangun tampilan dengan menggabungkan kelas-kelas utilitas yang telah didefinisikan sebelumnya.	Bootstrap menggunakan gaya dan komponen yang telah didefinisikan, yang memiliki tampilan yang sudah jadi dan dapat digunakan secara langsung.
+-Tailwind CSS memiliki file CSS yang lebih kecil sedikit dibandingkan Bootstrap dan hanya akan memuat kelas-kelas utilitas yang ada	Bootstrap memiliki file CSS yang lebih besar dibandingkan dengan Tailwind CSS karena termasuk banyak komponen yang telah didefinisikan.
+-Tailwind CSS memiliki memberikan fleksibilitas dan adaptabilitas tinggi terhadap proyek	Bootstrap sering kali menghasilkan tampilan yang lebih konsisten di seluruh proyek karena menggunakan komponen yang telah didefinisikan.
+-Tailwind CSS memiliki pembelajaran yang lebih curam karena memerlukan pemahaman terhadap kelas-kelas utilitas yang tersedia dan bagaimana menggabungkannya untuk mencapai tampilan yang diinginkan.
+
+Bootsrtap
+-Bootstrap menggunakan gaya dan komponen yang telah didefinisikan, yang memiliki tampilan yang sudah jadi dan dapat digunakan secara langsung.
+-Bootstrap memiliki pembelajaran yang lebih cepat untuk pemula karena dapat mulai dengan komponen yang telah didefinisikan.
+-Bootstrap memiliki file CSS yang lebih besar dibandingkan dengan Tailwind CSS karena termasuk banyak komponen yang telah didefinisikan.
+-Bootstrap sering kali menghasilkan tampilan yang lebih konsisten di seluruh proyek karena menggunakan komponen yang telah didefinisikan.
+
+Kapan Menggunakan Bootstrap:
+
+Ketika ingin membangun situs web dengan cepat menggunakan komponen-komponen UI yang telah dirancang sebelumnya.
+Ketika memiliki batasan waktu dan perlu menyelesaikan proyek dengan cepat.
+Ketika tidak memiliki pengalaman dalam menyesuaikan desain dengan CSS.
+
+Kapan Menggunakan Tailwind CSS:
+
+Ketika memerlukan tingkat customisasi yang tinggi dan ingin mendesain tampilan yang sangat khusus.
+Ketika ingin mengurangi ukuran file CSS dan memaksimalkan kinerja situs.
+Ketika memiliki pengetahuan yang baik tentang CSS atau ingin belajar lebih mendalam tentang CSS.
+
+
+5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+
+    - Kustomisasi desain pada templat HTML yang telah dibuat pada Tugas 4 dengan menggunakan CSS atau CSS framework (seperti Bootstrap, Tailwind, Bulma) dengan ketentuan sebagai berikut
+
+        -Kustomisasi halaman login, register, dan tambah inventori semenarik mungkin.
+        -Kustomisasi halaman daftar inventori menjadi lebih berwarna maupun menggunakan apporach lain seperti menggunakan Card.
+
+    Jawaban:
+    1. halaman login
+    pada halaman login sendiri, kita dapat mencari template html dan css dari sumber tertera atau sumber lainnya. Ketika kita menggunakan template atau framework, kita harus pastikan bahwa data yang digunakan pada login sesuai dengan apa yang telah kita buat sebelumnya, yakni username dan password.
+
+    Selain itu, kita juga menyediakan label register apabila user belum mwemiliki akun. label tersebut nantinya akan di-link ke laman register
+
+    2. Register
+    Pada laman register, kita telah mengimplementasikan {{ form.as_table }} yang merupakan sebuah form dalam template django. dalam hal ini, penting bagi kita untuk mengetahui bagaimana untuk men-styling {{ form.as_table }}  karena pemanggilan objectnya akan sedikit berbeda dari form login atau lainnya. 
+
+    3. Ketika 2 halaman ini telah dikustomisasi, pastikan bahwa kita mengklik submit pada register, kita harus kembali ke login, bukan ke halaman main. pastikan semua button berfungsi pada semestinya
+
+    4. Main
+    karena kita menggunakan card pada halaman ini, pastikan bahwa isi pada card tersebut merupakan sebuah looping dari produk yang anda ciptakan. Pada hal ini, ketika kita menambah product, otomatis akan menambah card tersebut. Pastikan bahwa keterangan-keterangan pada produk tertulis pada card tersebut dan juga elemen pendukung lainnya seperti button tambah product, nama aplikasi, identitas, button logout, last eddited date tercantum dengan baik
+
+    5. Tambah product dan edit product
+    kedua halaman ini memiliki inteface yang sama, sehingga implementasi kodenya juga akan sama. Sama halnya dengan register, halaman ini menggunakan {{ form.as_table }} sehingga perlu sedikit ketelitian untuk men-styling tiap objek halaman tersebut
+    
+    
