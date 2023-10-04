@@ -474,6 +474,10 @@ nav input{
   font-weight: 600;
 }
 
+.last-product .container .card {
+    background-color: #f09be2; /* Replace with your desired color */
+}
+
 
 
 </style>
@@ -502,7 +506,7 @@ nav input{
         {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
 
         {% for product in products %}
-            <div class="container">
+        <div class="container {% if forloop.last %}last-product{% endif %}">
                 <div class="card">
                 <div class="imgBx">
                   <!-- https://www.seekpng.com/png/full/111-1115842_food-kawaii-pink-ice-cream-pastel-japanese-food.png" -->
