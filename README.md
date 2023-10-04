@@ -365,11 +365,11 @@ Kekurangan:
 
 
  2. Jelaskan HTML5 Tag yang kamu ketahui.
- <title>: Digunakan untuk menentukan judul halaman web yang akan ditampilkan di bilah judul browser.
+ <title></title>: Digunakan untuk menentukan judul halaman web yang akan ditampilkan di bilah judul browser.
 
 <link>: Umumnya digunakan untuk menghubungkan halaman web dengan berkas CSS eksternal atau untuk mengatur favicon.
 
-<style>: Ini adalah tag untuk menentukan aturan gaya CSS dalam halaman HTML atau secara internal.
+<style></style>: Ini adalah tag untuk menentukan aturan gaya CSS dalam halaman HTML atau secara internal.
 
 <body>: Bagian utama dari halaman web yang berisi konten yang akan ditampilkan kepada pengguna.
 
