@@ -1,5 +1,5 @@
 from django.urls import path
-from main.views import show_main, create_product, show_xml, show_json, show_xml_by_id, show_json_by_id, register, login_user, logout_user, add_stock, reduce_stock, delete, edit_product
+from main.views import show_main, create_product, show_xml, show_json, show_xml_by_id, show_json_by_id, register, login_user, logout_user, add_stock, reduce_stock, delete, edit_product, get_product_json, add_product_ajax
 
 app_name = 'main'
 
@@ -17,6 +17,8 @@ urlpatterns = [
     path('reduce-stock/<int:product_id>/', reduce_stock, name='reduce_stock'),
     path('delete/<int:id>', delete, name='delete'),
     path('edit-product/<int:id>', edit_product, name='edit_product'),
+    path('get-product/', get_product_json, name='get_product_json'),
+    path('create-product-ajax/', add_product_ajax, name='add_product_ajax')
 ]
 
 # Berkas urls.py pada aplikasi main bertanggung jawab untuk mengatur rute URL yang terkait dengan aplikasi main.

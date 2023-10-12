@@ -1,4 +1,3 @@
-
 {% extends 'base.html' %}
 
 {% block meta %}
@@ -485,88 +484,161 @@ nav input{
 {% endblock meta %}
 
 {% block content %}
-        <nav>
-          <div class="wrapper">
-            <div class="logo"><a>Mochi Pachill</a></div>
-            <div class="identity"><a>Fayya Salwa A. - PBP B</a></div>
-            <div class="date"><a>Sesi terakhir login: {{ last_login }}</a></div>
-            <input type="radio" name="slider" id="menu-btn">
-            <input type="radio" name="slider" id="close-btn">
-            <ul class="nav-links">
-              <label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>
-              <li><a href="{% url 'main:create_product' %}">Add New Product</a></li>
-              <li><a href="{% url 'main:logout' %}">Logout</a></li>
-            </ul>
-            <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
+    
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Product</h1>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                      <form id="form" onsubmit="return false;">
+                          {% csrf_token %}
+                          <div class="mb-3">
+                              <label for="product" class="col-form-label">Name:</label>
+                              <input type="text" class="form-control" id="product" name="product"></input>
+                          </div>
+                          <div class="mb-3">
+                              <label for="price" class="col-form-label">Price:</label>
+                              <input type="text" class="form-control" id="price" name="price"></input>
+                          </div>
+                          <div class="mb-3">
+                              <label for="description" class="col-form-label">Description:</label>
+                              <textarea class="form-control" id="description" name="description"></textarea>
+                          </div>
+                          <div class="mb-3">
+                            <label for="amount" class="col-form-label">Amount:</label>
+                            <input type="number" class="form-control" id="amount" name="amount"></textarea>
+                          </div>
+                          <div class="mb-3">
+                            <label for="image" class="col-form-label">Image:</label>
+                            <input type="text" class="form-control" id="image" name="image"></input>
+                          </div>
+
+                      </form>
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-primary" id="button_add" data-bs-dismiss="modal">Add Product</button>
+                  </div>
+              </div>
           </div>
-        </nav>
-        
-        <body>
-  
-        {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
-
-        {% for product in products %}
-        <div class="container {% if forloop.last %}last-product{% endif %}">
-                <div class="card">
-                <div class="imgBx">
-                  <!-- https://www.seekpng.com/png/full/111-1115842_food-kawaii-pink-ice-cream-pastel-japanese-food.png" -->
-                    <img src={{product.image}}>
-                </div>
-                <div class="contentBx">
-                  <h2>{{product.product}}</h2>
-                  <div class="table">
-                  <table>
-
-                    <div class="tr1">
-                    <tr>
-                      <div class="price">
-                        <th>Price : </th>
-                      </div>
-
-                      <div class="amount">
-                        <th>Amount : </th>
-                      </div>
-                    </tr>
-                    </div>
-
-                    <div class="tr2">
-                    <tr>
-                      <div class="price">
-                        <td><span>{{product.price}}</span></td>
-                      </div>
-
-                      <div class="amount">
-                        <td><span>{{product.amount}}</span></td>
-                      </div>
-                    </tr>
-                  </div>
-
-                  </table>
-                  </div>
-                  <div class="description">
-                    <h3>Description : </h3>
-                    <h4>{{product.description}}</h4>
-                  </div>
-                      <a href="{% url 'main:reduce_stock' product.id %}">
-                        <button class="button" role="button">-</button>
-                      </a>
-                      <a href="{% url 'main:add_stock' product.id %}">
-                        <button class="button" role="button">+</button>
-                      </a>
-                      <a href="{% url 'main:delete' product.id %}">
-                        <button class="button" role="button">delete</button>
-                      </a>
-                      <a href="{% url 'main:edit_product' product.pk %}">
-                        <button class="button" role="button">edit</button>
-                      </a>
-                    <div class="dateadded">
-                    <h3>{{product.date_added}} </h3>
-                    </div>
-                </div>
-                </div>
+        </div>
+      
+        <!-- <body> -->
+          <nav>
+            <div class="wrapper">
+              <div class="logo"><a>Mochi Pachill</a></div>
+              <div class="identity"><a>Fayya Salwa A. - PBP B</a></div>
+              <div class="date"><a>Sesi terakhir login: {{ last_login }}</a></div>
+              <input type="radio" name="slider" id="menu-btn">
+              <input type="radio" name="slider" id="close-btn">
+              <ul class="nav-links">
+                <label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>
+                <li><a href="{% url 'main:create_product' %}">Add New Product</a></li>
+                <li><a href="{% url 'main:logout' %}">Logout</a></li>
+              </ul>
+              <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
             </div>
-        {% endfor %}
-      </body>
+            
+          </nav>
+       
+          <button type="button" class="btn btn-primary" id="button_add" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Product</button>
+      
+        
+        {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
+        <div id = "product_table"></div>
+                
+        
+        <script>
+          document.getElementById("button_add").addEventListener("click", addProduct);
+          async function getProducts() {
+                return fetch("{% url 'main:get_product_json' %}").then((res) => res.json())
+          }
+          async function refreshProducts() {
+              document.getElementById("product_table").innerHTML = ""
+              const products = await getProducts()
+              let htmlString = ``
+              products.forEach((item) => {
+                  htmlString += `       
+                  <div class="container {% if forloop.last %}last-product{% endif %} ">
+                    <div class="card">
+                      <div class="imgBx">
+                          <img src=${item.fields.image}>
+                      </div>
+                      <div class="contentBx">
+                        <h2>${item.fields.product}</h2>
+                        <div class="table">
+                          <table>
+                            <div class="tr1">
+                              <tr>
+                                <div class="price">
+                                  <th>Price : </th>
+                                </div>
+
+                                <div class="amount">
+                                  <th>Amount : </th>
+                                </div>
+                              </tr>
+                            </div>
+
+                            <div class="tr2">
+                              <tr>
+                                <div class="price">
+                                  <td><span>${item.fields.price}</span></td>
+                                </div>
+
+                                <div class="amount">
+                                  <td><span>${item.fields.amount}</span></td>
+                                </div>
+                              </tr>
+                            </div>
+
+                          </table>
+                        </div>
+                        <div class="description">
+                          <h3>Description : </h3>
+                          <h4>${item.fields.description}</h4>
+                        </div>
+                        <a href="reduce-stock/${item.pk}">
+                          <button class="button" role="button">-</button>
+                        </a>
+                        <a href="add-stock/${item.pk}">
+                          <button class="button" role="button">+</button>
+                        </a>
+                        <a href="delete/${item.pk}">
+                          <button class="button" role="button">delete</button>
+                        </a>
+                        <a href="edit-product/${item.pk}">
+                          <button class="button" role="button">edit</button>
+                        </a>
+                        
+                      </div>
+                    </div>
+                  </div>` 
+              })
+              
+              document.getElementById("product_table").innerHTML = htmlString
+          }
+      
+          refreshProducts()
+      
+          function addProduct() {
+              fetch("{% url 'main:add_product_ajax' %}", {
+                  method: "POST",
+                  body: new FormData(document.querySelector('#form'))
+              }).then(refreshProducts)
+
+              document.getElementById("form").reset()
+              return false
+          }
+
+          document.getElementById("button_add").onclick = addProduct
+      
+        </script>
+      <!-- </body> -->
+
     
 
 {% endblock content %}
