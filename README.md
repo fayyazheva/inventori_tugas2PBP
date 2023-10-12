@@ -456,4 +456,55 @@ Ketika memiliki pengetahuan yang baik tentang CSS atau ingin belajar lebih menda
     5. Tambah product dan edit product
     kedua halaman ini memiliki inteface yang sama, sehingga implementasi kodenya juga akan sama. Sama halnya dengan register, halaman ini menggunakan {{ form.as_table }} sehingga perlu sedikit ketelitian untuk men-styling tiap objek halaman tersebut
     
-    
+=====================TUGAS 6=============================
+1. Jelaskan perbedaan antara asynchronous programming dengan synchronous programming.
+
+asynchronous programming 
+-paradigma pemrograman di mana eksekusi program tidak terjadi secara berurutan atau blok
+-tugas-tugas yang memerlukan waktu seperti operasi I/O (Input/Output), permintaan jaringan, atau tugas berat lainnya dapat dikerjakan secara bersamaan tanpa harus menunggu satu tugas selesai
+
+synchronous programming
+-paradigma pemrograman di mana eksekusi program berlangsung secara berurutan dan blok
+-setiap pernyataan atau tugas dieksekusi satu per satu, dan eksekusi program akan menunggu hingga tugas saat ini selesai sebelum melanjutkan ke tugas berikutnya
+
+2. Dalam penerapan JavaScript dan AJAX, terdapat penerapan paradigma event-driven programming. Jelaskan maksud dari paradigma tersebut dan sebutkan salah satu contoh penerapannya pada tugas ini.
+
+paradigma event-driven programming -> pendekatan dalam pengembangan software di mana program merespons peristiwa (events) yang terjadi, baik dari pengguna atau sistem, dan menjalankan kode berdasarkan peristiwa tersebut
+
+program terutama terdiri dari handler (pemroses) peristiwa yang akan dieksekusi saat suatu peristiwa terjadi. Ini memungkinkan program untuk merespons secara dinamis terhadap interaksi pengguna dan perubahan yang terjadi, sehingga lebih interaktif dan responsif. Berbeda dengan alur program yang sekuensial, di mana instruksi dieksekusi satu per satu dari atas ke bawah, dalam paradigma ini, program terutama terdiri dari handler (pemroses) peristiwa yang akan dieksekusi saat suatu peristiwa tertentu terjadi
+
+contoh penerapan -> penggunaan tombol, input, atau elemen antarmuka lainnya untuk memicu permintaan ke server tanpa perlu refresh seluruh halaman web. Dalam konteks ini, AJAX (Asynchronous JavaScript and XML) dapat digunakan untuk melakukan permintaan ke server secara asinkron dan menangani responsnya dengan paradigma event-driven.
+
+3. Jelaskan penerapan asynchronous programming pada AJAX.
+Dalam AJAX, pengembang dapat mengirim permintaan HTTP ke server secara asinkron menggunakan objek XMLHttpRequest (XHR) atau API Fetch. Ini memungkinkan eksekusi kode JavaScript lainnya tanpa terhalang. Setelah pengiriman permintaan, pengembang dapat mengaitkan handler event atau promise untuk menentukan tindakan yang harus diambil ketika permintaan berhasil atau gagal. Prinsip dasar asynchronous programming di AJAX melibatkan penggunaan callback functions yang dieksekusi saat permintaan selesai. Selain callback, JavaScript mendukung promises, yang membuat pengelolaan operasi asinkron lebih mudah dan menghindari callback hell. Dengan asynchronous programming, aplikasi web tetap responsif selama permintaan ke server sedang berlangsung, memungkinkan respons terhadap tindakan pengguna dan eksekusi kode lain tanpa menunggu permintaan selesai.
+
+4. Pada PBP kali ini, penerapan AJAX dilakukan dengan menggunakan Fetch API daripada library jQuery. Bandingkanlah kedua teknologi tersebut dan tuliskan pendapat kamu teknologi manakah yang lebih baik untuk digunakan.
+
+Fetch API -> Fetch API adalah API JavaScript yang memungkinkan untuk melakukan permintaan jaringan (network requests) dalam pengembangan aplikasi web
+
+--Fetch API adalah API bawaan dari JavaScript yang memungkinkan untuk melakukan permintaan jaringan (seperti GET, POST, PUT, DELETE) dan menangani respons dalam format berbagai jenis, termasuk JSON. Fetch API juga mendukung promise, sehingga memudahkan pengelolaan operasi asinkron.
+
+--Fetch API lebih ringan dan memiliki ukuran yang lebih kecil daripada jQuery karena ini adalah bagian dari inti JavaScript modern. Karena itu, Fetch API dapat memberikan kinerja yang lebih baik jika Anda hanya perlu fitur-fitur dasar pengiriman permintaan jaringan.
+
+--Fetch API adalah bagian dari spesifikasi JavaScript modern dan mendapatkan dukungan yang kuat dari browser saat ini. Dengan demikian, dukungan untuk Fetch API akan terus ada dan berkembang.
+
+jQuery adalah sebuah pustaka JavaScript yang sangat populer dan digunakan secara luas dalam pengembangan aplikasi web. Dibuat oleh John Resig, jQuery menyediakan berbagai fasilitas untuk menyederhanakan interaksi dengan Dokumen Objek Model (DOM), menangani peristiwa (events), melakukan permintaan jaringan (AJAX), membuat animasi, dan banyak lagi. Berikut detail penjelasan mengenai jQuery
+
+--jQuery adalah pustaka JavaScript yang menyediakan berbagai fasilitas, termasuk AJAX (Asynchronous JavaScript and XML) untuk permintaan jaringan. jQuery juga memungkinkan untuk melakukan permintaan dan menangani respons dalam berbagai format. Ini termasuk dukungan untuk operasi asinkron dengan callback functions.
+
+--jQuery adalah pustaka yang lebih besar dengan lebih banyak fitur daripada Fetch API. Jika hanya membutuhkan fitur AJAX, menggunakan jQuery dapat mempengaruhi kinerja karena pustaka ini memiliki ukuran yang lebih besar.
+
+--jQuery adalah pustaka yang sudah ada sejak lama dan banyak digunakan dalam proyek-proyek yang ada. Meskipun masih ada banyak proyek yang menggunakan jQuery, penggunaannya telah menurun dalam pengembangan web modern, dan banyak pengembang lebih suka menggunakan pendekatan bawaan seperti Fetch API
+
+5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+
+1. Mengubah tugas 5 yang telah dibuat sebelumnya menjadi menggunakan AJAX.
+
+---Mengerjakan alur program dari AJAX GET
+    --Buat fungsi pada views.py untuk menampilkan data produk pada HTML dengan menggunakan fetch dan menambahkan produk baru ke basis data dengan AJAX
+    --Menambahkan path untuk mengarahkan ke fungsi views yang sudah dibuat sebelumnya
+    --Menambahkan id dan juga script yang diperlukan di dalam file main.html
+    --Membuat modal sebagai form di dalam file main.html
+---Mengerjakan alur program dari AJAX POST
+    --Membuat fungsi baru di dalam script di file main.html
+    --Tambahkan fungsi onclick untuk menambahkan item collections
