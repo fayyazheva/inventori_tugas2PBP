@@ -29,6 +29,7 @@ body{
   flex-wrap: wrap; /* Mengatur agar card terjajar secara horizontal dan melompat ke baris berikutnya jika tidak cukup lebar */
   justify-content: center; 
   align-items: flex-start;
+  flex-direction: row;
 }
 
 .container .card{
@@ -42,6 +43,8 @@ body{
   border-radius: 20px;
   overflow: hidden;
   margin: 10px;
+  max-width: 300px;
+  flex-grow: 1;
 }
 
 .container .card:before{
@@ -64,7 +67,7 @@ body{
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  z-index: 10000;
+  z-index: 1;
   width: 100%;
   height: 220px;
   transition: 0.5s;
@@ -84,6 +87,8 @@ body{
   width: 270px;
 }
 
+
+
 .container .card .contentBx{
   position: absolute;
   bottom: 0;
@@ -97,6 +102,8 @@ body{
 .container .card:hover .contentBx{
   height: 210px;
 }
+
+
 
 .container .card .contentBx h2{
   position: relative;
@@ -457,6 +464,32 @@ nav input{
     background-color: #f4db90; /* Replace with your desired color */
 }
 
+    .add-button-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    .add-button {
+        display: inline-block;
+        padding: 10px 20px;
+        border-radius: 4px;
+        text-decoration: none;
+        font-weight: 600;
+        color: #111;
+        border: 2px solid #E28F83;
+        background-color: #FAF2DA;
+        transition: all 0.3s;
+        margin: 0 auto;
+    }
+
+    .add-button:hover {
+        background-color: #E28F83;
+        color: #FFF;
+    }
+
+
+
 
 
 
@@ -531,7 +564,11 @@ nav input{
     </div>
   </div>
 
-  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Product by AJAX</button>
+
+  <div class="add-button-container">
+    <button type="button" class="add-button" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Product by AJAX</button>
+  </div>
+
 
   <script>
     async function getProducts() {
