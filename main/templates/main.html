@@ -10,7 +10,7 @@
 }
 
 body{
-  display: flex;
+  /* display: flex; */
   justify-content: center;
   align-items: center;
   min-height: 100vh;
@@ -25,12 +25,16 @@ body{
 .container{
   position: relative;
   margin-top: 70px;
+  display: flex; /* Mengatur kontainer untuk menampilkan card secara horizontal */
+  flex-wrap: wrap; /* Mengatur agar card terjajar secara horizontal dan melompat ke baris berikutnya jika tidak cukup lebar */
+  justify-content: center; 
+  align-items: flex-start;
 }
 
 .container .card{
   position: relative;
-  display: flex; 
-  flex-direction: row;
+  display: inline-block;
+  /* flex-direction: row; */
   width: 320px;
   height: 450px;
   background: #FAF2DA;
@@ -55,17 +59,6 @@ body{
 .container .card:hover:before{
   clip-path: circle(300px at 80% -20%);
 }
-
-/* .container .card:after{
-  content: 'Mochi';
-  position: absolute;
-  top: 30%;
-  left: -20%;
-  font-size: 8em;
-  font-weight: 800;
-  font-style: italic;
-  color: rgba(255,255,25,0.05)
-} */
 
 .container .card .imgBx{
   position: absolute;
@@ -384,9 +377,7 @@ nav .wrapper{
 }
 
 @media screen and (max-width: 970px) {
-  .wrapper .btn{
-    display: block;
-  }
+
   .wrapper .nav-links{
     position: fixed;
     height: 100vh;
@@ -402,7 +393,7 @@ nav .wrapper{
     box-shadow: 0px 15px 15px rgba(0,0,0,0.18);
     transition: all 0.3s ease;
   }
-  /* custom scroll bar */
+
   ::-webkit-scrollbar {
     width: 10px;
   }
@@ -457,22 +448,9 @@ nav .wrapper{
     font-size: 19px;
   }
 }
+
 nav input{
   display: none;
-}
-
-.body-text{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-  text-align: center;
-  padding: 0 30px;
-}
-.body-text div{
-  font-size: 45px;
-  font-weight: 600;
 }
 
 .container .card .last-product{
@@ -481,12 +459,14 @@ nav input{
 
 
 
+
+
 </style>
 
 {% endblock meta %}
 
 {% block content %}
-
+  <html>
   <body>
   <nav>
     <div class="wrapper">
@@ -501,16 +481,16 @@ nav input{
         <li><a href="{% url 'main:logout' %}">Logout</a></li>
       </ul>
       <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
-    </div>
-    
+    </div>  
   </nav>
   </body>
+  </html>
   
   <body>
     <div id = "product_table"></div>
   </body>
 
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="false" data-bs-keyboard="false">
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -635,11 +615,10 @@ nav input{
         document.getElementById("form").reset()
         return false
     }
-
-    document.getElementById("button_add").addEventListener("click", addProduct);
+    document.getElementById("button_add").onclick = addProduct
 
   </script>
-      <!-- </body> -->
+
 
     
 
