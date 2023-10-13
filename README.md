@@ -457,6 +457,7 @@ Ketika memiliki pengetahuan yang baik tentang CSS atau ingin belajar lebih menda
     kedua halaman ini memiliki inteface yang sama, sehingga implementasi kodenya juga akan sama. Sama halnya dengan register, halaman ini menggunakan {{ form.as_table }} sehingga perlu sedikit ketelitian untuk men-styling tiap objek halaman tersebut
     
 =====================TUGAS 6=============================
+link aplikasi:  http://fayya-salwa-tugas.pbp.cs.ui.ac.id
 1. Jelaskan perbedaan antara asynchronous programming dengan synchronous programming.
 
 asynchronous programming 
