@@ -10,21 +10,22 @@
         
     <!-- Design by foolishdeveloper.com -->
         <title>Login</title>
-    
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
         <!--Stylesheet-->
         <style media="screen">
         *,
-    *:before,
+    /* *:before,
     *:after{
         padding: 0;
         margin: 0;
         box-sizing: border-box;
-    }
+    } */
     body{
-        background-color: #4A503D;
+        background-color: #86a091;
     }
     .background{
         width: 430px;
@@ -33,6 +34,7 @@
         transform: translate(-50%,-50%);
         left: 50%;
         top: 50%;
+
     }
     .background .shape{
         height: 200px;
@@ -60,7 +62,7 @@
     form{
         height: 520px;
         width: 400px;
-        background-color: rgba(255,255,255,0.13);
+        background-color: rgba(255, 255, 255, 0.13);
         position: absolute;
         transform: translate(-50%,-50%);
         top: 50%;
@@ -77,6 +79,7 @@
         letter-spacing: 0.5px;
         outline: none;
         border: none;
+      
     }
     form h3{
         font-size: 32px;
@@ -103,7 +106,7 @@
         font-weight: 300;
     }
     ::placeholder{
-        color: #e5e5e5;
+        color: #a97a7a;
     }
     button{
         margin-top: 25px;
@@ -120,35 +123,14 @@
         margin-top: 25px;
         width: 100%;
         background-color: #ce8176;
-        color: #ffffff;
+        color: #000000;
         padding: 15px 0;
         font-size: 18px;
         font-weight: 600;
         border-radius: 5px;
         cursor: pointer;
     }
-    .social{
-    margin-top: 30px;
-    display: flex;
-    }
-    .social div{
-    background: red;
-    width: 150px;
-    border-radius: 3px;
-    padding: 5px 10px 10px 5px;
-    background-color: rgba(255,255,255,0.27);
-    color: #eaf0fb;
-    text-align: center;
-    }
-    .social div:hover{
-    background-color: rgba(255,255,255,0.47);
-    }
-    .social .fb{
-    margin-left: 25px;
-    }
-    .social i{
-    margin-right: 4px;
-    }
+ 
 
     </style>
     {% endblock meta %}
